@@ -1,7 +1,6 @@
 package com.in28minutes.database.databasedemo;
 
-import java.util.logging.Logger;
-
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,7 +12,8 @@ import com.in28minutes.database.databasedemo.jdbc.PersonJdbcDao;
 public class DatabaseDemoApplication implements CommandLineRunner {
 	@Autowired
 	PersonJdbcDao dao;
-	private Logger log =  (Logger) LoggerFactory.getLogger(this.getClass());
+	
+	private Logger log =  LoggerFactory.getLogger(this.getClass());
 	
 	public static void main(String[] args) {
 		SpringApplication.run(DatabaseDemoApplication.class, args);
@@ -22,7 +22,7 @@ public class DatabaseDemoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		log.info("res --" + dao.findAll());
+		log.info("res --> {}",dao.findAll());
 		//dao.findAll();
 	}
 
