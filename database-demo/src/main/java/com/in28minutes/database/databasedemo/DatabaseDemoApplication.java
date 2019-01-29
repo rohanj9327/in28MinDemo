@@ -16,11 +16,11 @@ import com.in28minutes.database.databasedemo.jpa.PersonJpaDao;
 
 @SpringBootApplication
 public class DatabaseDemoApplication implements CommandLineRunner {
-	@Autowired
-	PersonJdbcDao dao;
-	
 	//@Autowired
-	//PersonJpaDao dao;
+	//PersonJdbcDao dao;
+	
+	@Autowired
+	PersonJpaDao dao;
 	
 	private Logger log =  LoggerFactory.getLogger(this.getClass());
 	 
@@ -31,11 +31,19 @@ public class DatabaseDemoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		log.info("get res --> {}",dao.findAll());
-		log.info("get id 10002 --> {}",dao.findById(10001));
-		log.info("delete 10002 --> {}",dao.deletePerson(10002));
-		log.info("get id 10003 --> {}",dao.updatePerson(new Person(101,"rohu656 6 3","loc 36656",new Date(System.currentTimeMillis()))));
-		//log.info("get res --> {}",dao.findById(10001));
+		//log.info("get res --> {}",dao.findAll());
+		//log.info("get id 10002 --> {}",dao.findById(10001));
+		//log.info("delete 10002 --> {}",dao.deletePerson(10002));
+		//log.info("get id 10003 --> {}",dao.updatePerson(new Person(101,"rohu656 6 3","loc 36656",new Date(System.currentTimeMillis()))));
+		
+		log.info("get res --> {}",dao.insert(new Person("Rohan","london",new Date(System.currentTimeMillis()))));
+		log.info("get res --> {}",dao.insert(new Person(1,"Mohan","london",new Date(System.currentTimeMillis()))));
+		log.info("get res --> {}",dao.insert(new Person(2,"Harsh","london",new Date(System.currentTimeMillis()))));
+		log.info("get res --> {}",dao.update(new Person("Rohan","New York",new Date(System.currentTimeMillis()))));
+		log.info("get res --> {}",dao.findById(0));
+		//dao.deleteById(101);
+		log.info("get by id --> {}",dao.findById(0));
+		log.info("get findall --> {}",dao.findall());
 	}
 
 }
